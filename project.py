@@ -70,7 +70,17 @@ def remove():
         except ValueError:
             print(Fore.RED+"Please enter valid Task Number\n")
 
-    
+
+def clear():
+    confirm=input(Fore.RED+"Are you sure you want to clear all tasks? (y/n): ")
+    if confirm.lower() == "y":
+        todolist.clear()
+        save()
+        print(Fore.GREEN+"All tasks cleared successfully!\n")
+    else:
+        print(Fore.GREEN+"Tasks not cleared\n") 
+
+
 def menu():
     load()
     while(True):
@@ -79,7 +89,8 @@ def menu():
         print("2. View All Tasks")
         print("3. Mark a Task as Completed")
         print("4. Remove a Task")
-        print("5. Exit")
+        print("5. Clear All Tasks")
+        print("6. Exit")
         ch=input("Enter your choice: ")
         if ch=="1":
             add()
@@ -90,6 +101,8 @@ def menu():
         elif ch=="4":
             remove()
         elif ch=="5":
+            clear()
+        elif ch=="6":
             print(Fore.YELLOW+"Exiting The Application")
             exit()
         else:
